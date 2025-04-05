@@ -1,0 +1,10 @@
+[package]
+name = "libshared"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+libmq = { version = "0.1.0", path = "../libmq" }
+libtran = { version = "0.1.0", path = "../libtran" }
+serde = { version = "1.0.219", features = ["derive"] }
+strum = { version = "0.27.1", features = ["derive"] }

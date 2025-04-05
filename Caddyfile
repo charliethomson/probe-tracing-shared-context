@@ -1,0 +1,11 @@
+{
+    email charlie@thmsn.dev
+}
+
+xrpc.caddy.sample.orb.local {
+    reverse_proxy xrpc:8080
+}
+
+logs.caddy.sample.orb.local {
+    reverse_proxy jaeger:16686
+}

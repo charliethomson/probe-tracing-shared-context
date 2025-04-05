@@ -1,0 +1,8 @@
+[package]
+name = "libsignal"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.42.0", features = ["signal"] }
+tracing = "0.1.41"

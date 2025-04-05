@@ -1,0 +1,22 @@
+[package]
+name = "libmq"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = { version = "0.4.39", features = ["serde"] }
+derive_builder = "0.20.2"
+futures = "0.3.31"
+liberror = { version = "0.1.0", path = "../liberror" }
+rabbitmq-stream-client = "0.7.0"
+rmp-serde = "1.3.0"
+serde = { version = "1.0.217", features = ["derive"] }
+serde_json = "1.0.138"
+strum = { version = "0.26.3", features = ["derive"] }
+strum_macros = "0.26.4"
+tap = "1.0.1"
+thiserror = "2.0.11"
+tokio = "1.43.0"
+tracing = "0.1.41"
+uuid = { version = "1.12.1", features = ["serde", "v4"] }
+valuable = { version = "0.1.1", features = ["derive"] }

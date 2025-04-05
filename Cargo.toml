@@ -1,0 +1,12 @@
+[workspace]
+resolver = '2'
+members = [
+    "lib/liblog",
+    "lib/liberror",
+    "lib/libmq",
+    "lib/libshared",
+    "lib/libtran",
+    "listener",
+    "xrpc",
+    "lib/libsignal",
+]

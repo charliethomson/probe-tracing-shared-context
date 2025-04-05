@@ -1,0 +1,19 @@
+[package]
+name = "listener"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.5.35", features = ["derive", "env"] }
+liberror = { version = "0.1.0", path = "../lib/liberror" }
+liblog = { version = "0.1.0", path = "../lib/liblog" }
+libmq = { version = "0.1.0", path = "../lib/libmq" }
+libshared = { version = "0.1.0", path = "../lib/libshared" }
+libsignal = { version = "0.1.0", path = "../lib/libsignal" }
+libtran = { version = "0.1.0", path = "../lib/libtran" }
+serde = { version = "1.0.219", features = ["derive"] }
+thiserror = "2.0.12"
+tokio = { version = "1.44.1", features = ["full"] }
+tokio-util = "0.7.14"
+tracing = { version = "0.1.41", features = ["valuable"] }
+valuable = { version = "0.1.1", features = ["derive"] }

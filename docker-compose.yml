@@ -1,0 +1,92 @@
+services:
+  jaeger:
+    image: jaegertracing/jaeger:2.2.0
+    ports:
+      - "8001:16686"
+    networks:
+      - sample
+
+  rabbit:
+    build:
+      context: .
+      dockerfile: ./configs/rabbit.Dockerfile
+    networks:
+      - sample
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      start_period: 5s
+      retries: 3
+
+  listener:
+    build:
+      context: .
+      dockerfile: ./listener/Dockerfile
+    depends_on:
+      rabbit:
+        condition: service_healthy
+        restart: true
+      jaeger:
+        condition: service_started
+        restart: true
+    environment:
+      OTEL_ENDPOINT: grpc://jaeger:4317
+
+      MQ_HOST: rabbit
+      MQ_PORT: 5552
+      MQ_STREAM: sample
+
+      SAMPLELOG_LEVEL: INFO
+    networks:
+      - sample
+
+  xrpc:
+    build:
+      context: .
+      dockerfile: ./xrpc/Dockerfile
+    depends_on:
+      rabbit:
+        condition: service_healthy
+        restart: true
+      jaeger:
+        condition: service_started
+        restart: true
+    environment:
+      PORT: 8080
+
+      MQ_HOST: rabbit
+      MQ_PORT: 5552
+      MQ_STREAM: sample
+
+      OTEL_ENDPOINT: grpc://jaeger:4317
+
+      SAMPLELOG_LEVEL: INFO
+    networks:
+      - sample
+    healthcheck:
+      test: curl --fail http://localhost:8080/health || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
+
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy:/data
+    depends_on:
+      xrpc:
+        condition: service_healthy
+        restart: true
+    networks:
+      - sample
+networks:
+  sample:
+volumes:
+  caddy:

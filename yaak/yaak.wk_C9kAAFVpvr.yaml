@@ -1,0 +1,10 @@
+type: workspace
+model: workspace
+id: wk_C9kAAFVpvr
+createdAt: 2025-04-05T15:15:17.461625
+updatedAt: 2025-04-05T15:15:17.461625
+name: sample
+description: ''
+settingValidateCertificates: true
+settingFollowRedirects: true
+settingRequestTimeout: 0

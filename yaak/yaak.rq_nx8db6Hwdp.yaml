@@ -1,0 +1,35 @@
+type: http_request
+model: http_request
+id: rq_nx8db6Hwdp
+createdAt: 2025-04-05T16:26:01.920009
+updatedAt: 2025-04-05T16:26:18.299930
+workspaceId: wk_C9kAAFVpvr
+folderId: fl_bUc8bSxhjn
+authentication: {}
+authenticationType: null
+body:
+  text: |-
+    {
+      "lhs": 10,
+      "rhs": 5
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: 3qc4gFiDIR
+method: POST
+name: /div
+sortPriority: 0.003
+url: ${[ XRPC_PROTO ]}://${[ XRPC_HOST ]}:${[ XRPC_PORT ]}/dev.thmsn.sample/div
+urlParameters:
+- enabled: true
+  name: x-source
+  value: dev.thmsn.sample.testing
+  id: sx8indQwKY
+- enabled: true
+  name: ''
+  value: ''
+  id: Bp6bJYX8tn
