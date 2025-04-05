@@ -1,9 +1,7 @@
 use std::collections::HashMap;
 
-use liblog::{Extractor, Injector, OpenTelemetrySpanExt};
+use liblog::{Extractor, Injector};
 use serde::{Deserialize, Serialize};
-use tracing::Span;
-use uuid::Uuid;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct Transaction {

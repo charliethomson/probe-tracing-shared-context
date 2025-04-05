@@ -17,4 +17,3 @@ liblog = { version = "0.1.0", path = "../lib/liblog" }
 libshared = { version = "0.1.0", path = "../lib/libshared" }
 libmq = { version = "0.1.0", path = "../lib/libmq" }
 libtran = { version = "0.1.0", path = "../lib/libtran" }
-futures-util = "0.3.31"

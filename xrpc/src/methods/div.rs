@@ -23,5 +23,5 @@ pub async fn div_endpoint(
             rhs: payload.rhs,
         },
     };
-    client.send(call).await.map_err(|e| ApiError::Send(e))
+    client.send(call).await.map_err(ApiError::Send)
 }

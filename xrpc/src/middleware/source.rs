@@ -1,16 +1,9 @@
 use std::future::{Ready, ready};
 
-use actix_web::{
-    Error, FromRequest, HttpMessage, HttpResponse, HttpResponseBuilder,
-    dev::{Service, ServiceRequest, ServiceResponse, Transform, forward_ready},
-};
-use futures_util::future::LocalBoxFuture;
-
-use crate::error::ApiResult;
-
-struct SourceExtension(Option<String>);
+use actix_web::FromRequest;
 
 pub struct Source(String);
+#[allow(unused)]
 impl Source {
     pub fn into_inner(self) -> String {
         self.0

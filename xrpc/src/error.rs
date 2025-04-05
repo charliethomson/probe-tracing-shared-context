@@ -1,6 +1,6 @@
 use std::fmt::Debug;
 
-use actix_web::{HttpResponseBuilder, Responder, ResponseError, body::BoxBody, http::StatusCode};
+use actix_web::{HttpResponseBuilder, Responder, body::BoxBody, http::StatusCode};
 use serde::Serialize;
 use thiserror::Error;
 
@@ -12,9 +12,6 @@ use thiserror::Error;
     content = "context"
 )]
 pub enum ApiError {
-    #[serde(rename = "dev.thmsn.sample.xrpc.error.unimplemented")]
-    #[error("Unimplemented")]
-    Unimplemented,
     #[serde(rename = "dev.thmsn.sample.xrpc.error.send")]
     #[error("Failed to send message: {0}")]
     Send(libmq::client::MessageQueueClientError),
@@ -45,7 +42,6 @@ impl<T: Debug + Serialize> ApiResult<T> {
         };
 
         match error {
-            ApiError::Unimplemented => StatusCode::NOT_IMPLEMENTED,
             ApiError::Send(_) => StatusCode::INTERNAL_SERVER_ERROR,
         }
     }

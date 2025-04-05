@@ -4,7 +4,6 @@ use actix_web::{
 };
 use libtran::Transaction;
 use tracing::{Level, instrument};
-use tracing_actix_web::RequestId;
 
 use crate::{
     error::ApiResult,
