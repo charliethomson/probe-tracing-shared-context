@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_nx8db6Hwdp
 createdAt: 2025-04-05T16:26:01.920009
-updatedAt: 2025-04-05T16:26:18.299930
+updatedAt: 2025-04-05T16:43:09.311823
 workspaceId: wk_C9kAAFVpvr
 folderId: fl_bUc8bSxhjn
 authentication: {}
@@ -19,17 +19,17 @@ headers:
 - enabled: true
   name: Content-Type
   value: application/json
-  id: 3qc4gFiDIR
+  id: QNfAy8E5Kb
+- enabled: true
+  name: x-source
+  value: dev.thmsn.sample.testing
+  id: jERTbi3yyt
 method: POST
 name: /div
 sortPriority: 0.003
 url: ${[ XRPC_PROTO ]}://${[ XRPC_HOST ]}:${[ XRPC_PORT ]}/dev.thmsn.sample/div
 urlParameters:
 - enabled: true
-  name: x-source
-  value: dev.thmsn.sample.testing
-  id: sx8indQwKY
-- enabled: true
   name: ''
   value: ''
-  id: Bp6bJYX8tn
+  id: gM6GUQIgHC

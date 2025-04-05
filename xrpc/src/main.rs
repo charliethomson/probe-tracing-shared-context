@@ -10,7 +10,6 @@ use clap::Parser;
 use dispatch::configure;
 use liblog::register_tracing_subscriber;
 use libshared::mq::SampleClient;
-use middleware::source::SourceMiddlewareFactory;
 use state::AppState;
 use std::sync::Arc;
 use tracing_actix_web::TracingLogger;
@@ -53,7 +52,6 @@ async fn main() -> anyhow::Result<()> {
             .app_data(Data::new(AppState {
                 client: client.clone(),
             }))
-            .wrap(SourceMiddlewareFactory)
             .wrap(
                 Cors::default()
                     .allow_any_header()
